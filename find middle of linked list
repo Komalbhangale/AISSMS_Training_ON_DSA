@@ -1,0 +1,88 @@
+#include<iostream>
+using namespace std;
+
+//user defined data type--node
+class Node
+{
+    public:
+    int data;
+    Node* next;
+
+    Node(int val)
+    {
+        data=val;
+        next=NULL;
+    }   
+};
+
+class singly_linked_list
+{
+private:
+Node* head;// Node* data type   head=-=variable name
+public:
+singly_linked_list()
+{
+    head=NULL; //empty linked list
+}
+//insertion at start
+void insertatstart(int val)//10
+{
+    Node* newnode = new Node(val);
+    newnode->next=head;
+    head=newnode;
+}
+
+
+
+//travesing /visiting operations of singly linked list
+void traverse()
+{
+    Node* temp=head;
+
+    while(temp!=NULL)
+    {
+        cout<<temp->data<<"->";
+        temp=temp->next;
+    }
+    cout<<"NULL"<<endl;
+}
+
+void findmidelement()
+{
+    Node* slow=head;
+    Node* fast = head;
+
+    while(fast!=NULL && fast->next!=NULL)
+    {
+        slow=slow->next;
+        fast=fast->next->next;
+
+
+    }
+    cout<<slow->data;
+}
+
+
+
+
+};
+
+
+int main()
+{
+    singly_linked_list obj;
+
+    //insertion operations in singly libnked list
+    obj.insertatstart(10);
+    obj.insertatstart(20);//head ->20-->10
+    obj.insertatstart(30);//head ->30--->20-->10
+    obj.insertatstart(40);
+    obj.insertatstart(50);
+
+    obj.traverse();
+
+    obj.findmidelement();
+
+    
+    
+}

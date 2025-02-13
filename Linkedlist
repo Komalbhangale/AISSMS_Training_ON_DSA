@@ -1,0 +1,149 @@
+//LInked list basic operations in c++
+#include<iostream>
+using namespace std;
+
+//user defined data type--node
+class Node
+{
+    public:
+    int data;
+    Node* next;
+
+    Node(int val)
+    {
+        data=val;
+        next=NULL;
+    }   
+};
+
+class singly_linked_list
+{
+private:
+Node* head;// Node* data type   head=-=variable name
+public:
+singly_linked_list()
+{
+    head=NULL; //empty linked list
+}
+//insertion at start
+void insertatstart(int val)//10
+{
+    Node* newnode = new Node(val);
+    newnode->next=head;
+    head=newnode;
+}
+
+//insert at end
+void insertstend(int val)
+{
+    Node* newnode=new Node(val);
+    Node* temp=head;
+    if(head==NULL)
+    {
+        head=newnode;
+    }
+    while(temp->next!=NULL)
+    {
+        temp=temp->next;
+    }
+    temp->next=newnode;
+}
+
+//travesing /visiting operations of singly linked list
+void traverse()
+{
+    Node* temp=head;
+
+    while(temp!=NULL)
+    {
+        cout<<temp->data<<"->";
+        temp=temp->next;
+    }
+    cout<<"NULL"<<endl;
+}
+//delete at start
+void deleteatstart()
+{
+    if(head==NULL)
+    {
+        cout<<"linked list is emepty";
+    }
+    Node* temp=head;
+    head=temp->next;
+    delete temp;
+}
+
+void deleteatend()
+{
+    Node*temp=head;
+    if(head==NULL)
+    {
+        cout<<"linked list is alltready empty";
+    }
+    while(temp->next->next!=NULL)
+    {
+        temp=temp->next;
+    }
+    delete temp->next;
+    temp->next=NULL;
+}
+
+int getlength()
+{
+    int length=0;
+    Node* temp=head;
+    while(temp!=NULL)
+    {
+        length++;
+        temp=temp->next;
+    }
+
+    return length;
+}
+void insertionatspecifposition(int val,int pos)
+{
+    int length=getlength();
+
+    if(pos<1 ||pos>length+1)
+    {
+        cout<<"invalid position";
+    }
+
+    Node* newnode=new Node(val);
+    if(pos==1)
+    {
+        newnode->next=head;
+        head=newnode;
+    }
+    Node *temp=head;
+    for(int i=1;i<pos-1;i++)
+    {
+        temp=temp->next;
+    }
+    newnode->next=temp->next;
+    temp->next=newnode;
+}
+};
+
+
+int main()
+{
+    singly_linked_list obj;
+
+    //insertion operations in singly libnked list
+    obj.insertatstart(10);
+    obj.insertatstart(20);//head ->20-->10
+    obj.insertatstart(30);//head ->30--->20-->10
+
+    obj.insertstend(100);//30-->20-->10-->100
+    obj.insertionatspecifposition(200,3);
+    obj.traverse();
+
+    //deletion
+    //obj.deleteatstart();
+    //obj.deleteatend();
+    //traversing operation
+    //obj.traverse();
+
+    
+}

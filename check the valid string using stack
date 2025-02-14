@@ -1,0 +1,73 @@
+/*
+Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+
+An input string is valid if:
+
+Open brackets must be closed by the same type of brackets.
+Open brackets must be closed in the correct order.
+Every close bracket has a corresponding open bracket of the same type.
+ 
+Example 1:
+Input: s = "()"
+Output: true
+
+Example 2:
+Input: s = "()[]{}"
+Output: true
+
+Example 3:
+Input: s = "(]"
+Output: false
+
+Example 4:
+Input : s=”{[(])}”
+ 
+
+Constraints:
+1 <= s.length <= 104
+s consists of parentheses only '()[]{}'.
+
+
+*/
+
+
+#include<iostream>
+#include<stack>
+using namespace std;
+bool isvalid(string s)
+{
+    stack<char> s;
+    for(char ch:s)
+    {
+        if(ch=='('||ch=='['||ch=='{')
+        {
+            s.push(ch);
+        }
+        char top=s.top();
+
+        if(ch==')' && top=='('||ch==']' && top=='[' ||ch=='}' && top=='{')
+        {
+            s.pop();
+        }
+        else{
+            return false;
+        }
+    }
+return s.empty();
+}
+
+int main()
+{
+    string s;
+    cout<<"ENter the string";
+    cin>>s;
+
+    if(isvalid(s))
+    {
+        cout<<"true"<<endl;
+    }
+    else{
+        cout<<"False"<<endl;
+    }
+
+}

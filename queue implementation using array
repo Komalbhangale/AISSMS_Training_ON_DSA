@@ -1,0 +1,79 @@
+#include<iostream>
+using namespace std;
+
+#define size 5
+
+class queue
+{
+    int rear,front;
+    int arr[size];
+    public:
+    queue()
+    {
+        rear=-1;
+        front=-1;
+    }
+
+    bool isfull()
+    {
+        if(rear!=size-1)
+        {
+            return false;
+        }
+        return true;
+    }
+    void enqueue(int val)
+    {
+        if(isfull())
+        {
+            cout<<"queue is allready full";
+        }
+        if(front==-1)
+        {
+            front=0;
+        }
+        arr[++rear]=val;
+        cout<<val <<" got added inside the queue"<<endl;
+
+    }
+
+
+    bool isempty()
+    {
+        if(front!=rear)
+        {
+            return false;
+        }
+        return true;
+    }
+    void peek()
+    {
+        if(isempty())
+        {
+            cout<<"queue is emepty";
+        }
+        cout<<arr[front];
+    }
+
+    void dequeue()
+    {
+        if(isempty())
+        {
+            cout<<"queue is empty";
+        }
+        cout<<arr[front]<<"got dequeued";
+        front++;
+    }
+};
+
+int main()
+{
+    queue q;
+    q.enqueue(10);
+    q.enqueue(20);
+    q.enqueue(30);
+
+    q.peek();
+
+    q.dequeue();
+}

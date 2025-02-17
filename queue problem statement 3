@@ -1,0 +1,96 @@
+/*
+Given an integer k and a queue of integers, reverse the order of the first k elements of the queue, leaving the other elements in the same relative order.
+ 
+Constraints:
+1 <= k <= queue.size()
+The queue will have at most 10^5 elements.
+Each element of the queue is an integer between -10^9 and 10^9.
+ 
+Input:
+An integer k
+A queue of integers
+ 
+Output:
+The modified queue with the first k elements reversed
+ 
+Example:
+Example 1:
+ 
+Input:
+k = 3
+queue = [10, 20, 30, 40, 50]
+ 
+Output:
+queue = [30, 20, 10, 40, 50]
+
+*/
+
+
+
+
+
+#include<iostream>
+#include <queue>
+#include <stack>
+
+void reverseFirstKelemets(std::queue<int>& q,int k)
+{
+    if(q.empty()||k>q.size()||k<=0)
+    {
+        return;
+    }
+
+    std::stack<int> s;
+    //remove the first kl elements from queue and push inside stacl
+    for(int i=0;i<k;i++)
+    {
+        s.push(q.front());
+        q.pop();
+    }
+    //pop eleements from stack and add isndie the queue
+    while(!s.empty())
+    {
+        q.push(s.top());
+        s.pop();
+    }
+    //remmaining lemen ts
+    int rem=q.size()-k;
+    for(int i=0;i<rem;i++)
+    {
+        q.push(q.front());
+        q.pop();
+    }
+}
+
+void printqueue(std::queue<int> q)
+{
+    while(!q.empty())
+    {
+        std::cout<<q.front()<<" ";
+        q.pop();
+    }
+
+    std::cout<<"\n";
+}
+
+int main()
+{
+    std::queue<int> q;
+
+    q.push(10);
+    q.push(20);
+    q.push(30);
+    q.push(40);
+    q.push(50);
+
+    int k=3;
+
+
+    std::cout<<"original queue :";
+    printqueue(q);
+
+    reverseFirstKelemets(q,k);
+    std::cout<<"modified queue :";
+    printqueue(q);
+
+}

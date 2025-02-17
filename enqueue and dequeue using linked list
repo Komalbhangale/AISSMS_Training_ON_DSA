@@ -1,0 +1,75 @@
+#include<iostream>
+using namespace std;
+
+class node
+{
+    public:
+    int data;
+    node* next;
+
+    node(int val)
+    {
+        data=val;
+        next=NULL;
+    }
+};
+
+class queue
+{
+    node* front;
+    node* rear;
+public:
+    queue()
+    {
+        front=NULL;
+        rear=NULL;
+    }
+
+    void enqueue(int val)
+    {
+        node* newnode=new node(val);
+        if(rear==NULL)//check queue is empty
+        {
+            front=rear=newnode;
+        }
+        rear->next=newnode;
+        rear=newnode;
+
+        cout<< val << "got added inside the queue"<<endl;
+    }
+
+    void display()
+    {
+        node* temp=front;
+        while(temp!=NULL)
+        {
+            cout<<temp->data<<" ";
+            temp=temp->next;
+        }
+    }
+
+    void dequeue()
+    {
+        if(front==NULL && rear==NULL)
+        {
+            cout<<"queue is empty";
+        }
+        node* temp=front;
+        front=front->next;
+        cout<<temp->data<<"giot deleted from queue"<<endl;
+        delete temp;
+    }
+};
+
+int main()
+{
+    queue q;
+    q.enqueue(10);
+    q.enqueue(20);
+    q.enqueue(30);
+
+    q.display();
+    q.dequeue();
+    q.display();
+
+}

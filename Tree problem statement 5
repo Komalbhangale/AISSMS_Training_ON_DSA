@@ -1,0 +1,39 @@
+Find the maximum element in the tree.
+
+Basic structure:
+#include <iostream>
+using namespace std;
+
+
+// TreeNode structure
+struct TreeNode {
+    int data;
+    TreeNode* left;
+    TreeNode* right;
+    TreeNode(int val) {
+        data = val;
+        left = right = NULL;
+    }
+};
+
+
+// Function to find the maximum element
+int findMax(TreeNode* root) {
+    
+}
+
+
+int main() {
+    TreeNode* root = new TreeNode(10);
+    root->left = new TreeNode(20);
+    root->right = new TreeNode(30);
+    root->left->left = new TreeNode(40);
+    root->left->right = new TreeNode(50);
+
+
+    cout << "Maximum element in the tree: " << findMax(root) << endl;
+    return 0;
+}
+
+
+

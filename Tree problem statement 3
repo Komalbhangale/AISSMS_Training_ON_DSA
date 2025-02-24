@@ -1,0 +1,38 @@
+Count the leaf nodes
+
+basic structure:
+
+#include <iostream>
+using namespace std;
+
+
+// TreeNode structure
+struct TreeNode {
+    int data;
+    TreeNode* left;
+    TreeNode* right;
+    TreeNode(int val) {
+        data = val;
+        left = right = NULL;
+    }
+};
+
+
+// Function to count leaf nodes
+int countLeafNodes(TreeNode* root) {
+    
+}
+
+
+int main() {
+    TreeNode* root = new TreeNode(1);
+    root->left = new TreeNode(2);
+    root->right = new TreeNode(3);
+    root->left->left = new TreeNode(4);
+    root->left->right = new TreeNode(5);
+
+
+    cout << "Number of leaf nodes: " << countLeafNodes(root) << endl;
+    return 0;
+}
+

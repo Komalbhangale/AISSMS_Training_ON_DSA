@@ -1,0 +1,38 @@
+Detect Cycle in an Undirected Graph
+
+basic strucure:
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+class Graph {
+    int V;
+    vector<vector<int>> adj;
+
+public:
+    Graph(int V) {
+        this->V = V;
+        adj.resize(V);
+    }
+
+    void addEdge(int u, int v) {
+        adj[u].push_back(v);
+        adj[v].push_back(u);
+    }
+
+   
+    bool isCyclic() {
+       
+    }
+};
+
+int main() {
+    Graph g(4);
+    g.addEdge(0, 1);
+    g.addEdge(1, 2);
+    g.addEdge(2, 0);
+
+    cout << (g.isCyclic() ? "Graph has a cycle" : "No cycle in the graph") << endl;
+    return 0;
+}

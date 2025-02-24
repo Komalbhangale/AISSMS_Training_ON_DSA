@@ -1,0 +1,84 @@
+Basic implementation of tree with tree traversals
+
+
+//Basic structure
+
+#include <iostream>
+#include <queue>
+using namespace std;
+
+
+// Define a Tree Node Structure
+struct TreeNode {
+    int data;
+    TreeNode* left;
+    TreeNode* right;
+
+
+    TreeNode(int val) {
+        data = val;
+        left = right = NULL;
+    }
+};
+
+
+// Inorder Traversal (Left - Root - Right)
+void inorder(TreeNode* root) {
+   
+}
+
+
+// Preorder Traversal (Root - Left - Right)
+void preorder(TreeNode* root) {
+   
+}
+
+
+// Postorder Traversal (Left - Right - Root)
+void postorder(TreeNode* root) {
+   
+}
+
+
+// Level Order Traversal (BFS using Queue)
+void levelOrder(TreeNode* root) {
+   
+    }
+}
+
+
+int main() {
+   
+    TreeNode* root = new TreeNode(1);
+    root->left = new TreeNode(2);
+    root->right = new TreeNode(3);
+    root->left->left = new TreeNode(4);
+    root->left->right = new TreeNode(5);
+    root->right->left = new TreeNode(6);
+    root->right->right = new TreeNode(7);
+
+
+    cout << "Inorder Traversal: ";
+    inorder(root);
+    cout << endl;
+
+
+    cout << "Preorder Traversal: ";
+    preorder(root);
+    cout << endl;
+
+
+    cout << "Postorder Traversal: ";
+    postorder(root);
+    cout << endl;
+
+
+    cout << "Level Order Traversal: ";
+    levelOrder(root);
+    cout << endl;
+
+
+    return 0;
+}
+
+
